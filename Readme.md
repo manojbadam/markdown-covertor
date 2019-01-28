@@ -12,6 +12,15 @@ go build
 ./markdown-covertor wiki -i /Users/badam/test/clone/gist/cilium-podcidr.md -o converted.md
 ```
 
+### How to run using docker
+```
+git clone git@github.com:manojbadam/markdown-covertor.git
+cd markdown-convertor
+docker build -t convertor .
+docker run -it -v $PWD:/home convertor markdown-convertor wiki -i /home/sample.md
+docker run -it -v $PWD:/home convertor markdown-convertor wiki -i /home/sample.md -o /home/output.wiki
+```
+
 Once the markdown is converted into `output.wiki` file,  refer this [page](https://confluence.atlassian.com/doc/confluence-wiki-markup-251003035.html#ConfluenceWikiMarkup-markdownCanIinsertmarkdown?) for how to insert the markdown 
 
 
