@@ -1,29 +1,18 @@
 package main
 
 import (
-	"fmt"
-	"io/ioutil"
 	"regexp"
 	"strconv"
 	"strings"
 )
 
-func readFileIntoSlice(filename string) ([]string, error) {
-	data, err := ioutil.ReadFile(filename)
-	if err != nil {
-		return nil, err
-	}
-	ss := strings.Split(string(data), "\n")
-	return ss, nil
-}
-
 // ConvertGithubMarkup converts the github markup file to Wiki MarkDown file
-func ConvertGithubMarkup(filename string) string {
+func ConvertGithubMarkup(filename string) (string, error) {
 	result := []string{}
 
-	output, err := readFileIntoSlice(filename)
+	output, err := ReadFile(filename)
 	if err != nil {
-		fmt.Println(err)
+		return "", err
 	} else {
 		logger.Info("Total Lines", len(output))
 		for _, v := range output {
@@ -33,8 +22,8 @@ func ConvertGithubMarkup(filename string) string {
 			}
 			result = append(result, v)
 		}
+		return strings.Join(result, "\n"), nil
 	}
-	return strings.Join(result, "\n")
 }
 
 // replaceHeaders replaces the header hashes ## with h2 markup

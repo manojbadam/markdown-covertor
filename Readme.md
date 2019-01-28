@@ -8,8 +8,9 @@ This is still work in progress. Currently capable of converting headers, code bl
 go get git@github.com:manojbadam/markdown-covertor.git
 cd $GOPATH/src/github.com/manojbadam/markdown-convertor
 export FILE_PATH="<path/to/readme.md>"
-go run main.go > output.wiki
-``` 
+go build
+./markdown-covertor wiki -i /Users/badam/test/clone/gist/cilium-podcidr.md -o converted.md
+```
 
 Once the markdown is converted into `output.wiki` file,  refer this [page](https://confluence.atlassian.com/doc/confluence-wiki-markup-251003035.html#ConfluenceWikiMarkup-markdownCanIinsertmarkdown?) for how to insert the markdown 
 
